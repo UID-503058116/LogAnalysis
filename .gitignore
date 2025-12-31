@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+#miscellaneous files
+.env
+.env.test
+uv.lock
+
+
+# AI agent files
+.claude
+.marscode
+CLAUDE.md
+项目说明.MD
+Development.md

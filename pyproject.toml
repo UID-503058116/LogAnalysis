@@ -1,0 +1,54 @@
+[project]
+name = "logginganalysis"
+version = "0.1.0"
+description = "AI-driven log analysis tool with MCP server interface"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=0.3.0",
+    "langchain-openai>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-text-splitters>=0.3.0",
+    "openai>=2.14.0",
+    "pydantic-settings>=2.12.0",
+    "python-dotenv>=1.0.0",
+    "zai-sdk>=0.2.0",
+    "mcp>=0.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.2",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "mypy>=1.11.0",
+    "ruff>=0.8.0",
+]
+
+[project.scripts]
+logginganalysis = "logginganalysis.__main__:main"
+logginganalysis-mcp = "logginganalysis.mcp.server:main_sync"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["logginganalysis"]
+omit = ["tests/*"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

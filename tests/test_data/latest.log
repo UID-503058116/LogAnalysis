@@ -1,0 +1,160 @@
+[072月2025 19:27:36.702] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--username, Luna, --version, 1.18.2-Forge_40.3.0, --gameDir, D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0, --assetsDir, D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\assets, --assetIndex, 1.18, --uuid, 0000000000003004998F501A96F2F65C, --accessToken, ????????, --clientId, ${clientid}, --xuid, ${auth_xuid}, --userType, msa, --versionType, PCL, --width, 873, --height, 508, --launchTarget, forgeclient, --fml.forgeVersion, 40.3.0, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220404.173914]
+[072月2025 19:27:36.710] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.1.3+9.1.3+main.9b69c82a starting: java version 17.0.8 by Microsoft
+[072月2025 19:27:36.727] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [fmlclientdev,forgeclient,minecraft,forgegametestserverdev,fmlserveruserdev,fmlclient,fmldatauserdev,forgeserverdev,forgeserveruserdev,forgeclientdev,forgeclientuserdev,forgeserver,forgedatadev,fmlserver,fmlclientuserdev,fmlserverdev,forgedatauserdev,testharness,forgegametestserveruserdev]
+[072月2025 19:27:36.749] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
+[072月2025 19:27:36.767] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,eventbus,slf4jfixer,object_holder_definalize,runtime_enum_extender,capability_token_subclass,accesstransformer,runtimedistcleaner]
+[072月2025 19:27:36.784] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[072月2025 19:27:36.820] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: java.util.stream.ReferencePipeline$3@3e2822
+[072月2025 19:27:36.834] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [mixin,fml]
+[072月2025 19:27:36.834] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
+[072月2025 19:27:36.835] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service mixin
+[072月2025 19:27:36.835] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service mixin
+[072月2025 19:27:36.835] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
+[072月2025 19:27:36.838] [main/DEBUG] [net.minecraftforge.fml.loading.LauncherVersion/CORE]: Found FMLLauncher version 1.0
+[072月2025 19:27:36.838] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML 1.0 loading
+[072月2025 19:27:36.838] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found ModLauncher version : 9.1.3+9.1.3+main.9b69c82a
+[072月2025 19:27:36.838] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Requesting CoreMods to not apply the fix for ASMAPI.findFirstInstructionBefore by default
+[072月2025 19:27:36.839] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found AccessTransformer version : 8.0.4+66+master.c09db6d7
+[072月2025 19:27:36.839] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found EventBus version : 5.0.3+70+master.d7d405b
+[072月2025 19:27:36.840] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found Runtime Dist Cleaner
+[072月2025 19:27:36.841] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/]: CoreMods will preserve legacy behavior of ASMAPI.findFirstInstructionBefore for backwards-compatibility
+[072月2025 19:27:36.841] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found CoreMod version : 5.2.5
+[072月2025 19:27:36.842] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package implementation version 4.0.15-4.x+4.0.15-4.x+4.x.038e91c0
+[072月2025 19:27:36.843] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package specification 4
+[072月2025 19:27:36.844] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
+[072月2025 19:27:36.845] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
+[072月2025 19:27:36.854] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
+[072月2025 19:27:36.854] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service mixin
+[072月2025 19:27:36.876] [main/DEBUG] [mixin/]: MixinService [ModLauncher] was successfully booted in cpw.mods.cl.ModuleClassLoader@5b239d7d
+[072月2025 19:27:36.893] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/D:/新建文件夹/Snapshot%202.8.12(2)/.minecraft/libraries/org/spongepowered/mixin/0.8.5/mixin-0.8.5.jar%2348!/ Service=ModLauncher Env=CLIENT
+[072月2025 19:27:36.897] [main/DEBUG] [mixin/]: Initialising Mixin Platform Manager
+[072月2025 19:27:36.897] [main/DEBUG] [mixin/]: Adding mixin platform agents for container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[072月2025 19:27:36.897] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[072月2025 19:27:36.898] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[072月2025 19:27:36.898] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[072月2025 19:27:36.899] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[072月2025 19:27:36.901] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service mixin
+[072月2025 19:27:36.901] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
+[072月2025 19:27:36.901] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Setting up basic FML game directories
+[072月2025 19:27:36.902] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing GAMEDIR directory : D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0
+[072月2025 19:27:36.902] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0
+[072月2025 19:27:36.902] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing MODSDIR directory : D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods
+[072月2025 19:27:36.903] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods
+[072月2025 19:27:36.903] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing CONFIGDIR directory : D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\config
+[072月2025 19:27:36.903] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\config
+[072月2025 19:27:36.903] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\config\fml.toml
+[072月2025 19:27:36.903] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading configuration
+[072月2025 19:27:36.944] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing default config directory directory : D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\defaultconfigs
+[072月2025 19:27:36.944] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing ModFile
+[072月2025 19:27:36.947] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing launch handler
+[072月2025 19:27:36.948] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Using forgeclient as launch service
+[072月2025 19:27:36.970] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Received command line version data  : VersionInfo[forgeVersion=40.3.0, mcVersion=1.18.2, mcpVersion=20220404.173914, forgeGroup=net.minecraftforge]
+[072月2025 19:27:36.972] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
+[072月2025 19:27:36.972] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'srg'
+[072月2025 19:27:36.972] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {}
+[072月2025 19:27:36.973] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
+[072月2025 19:27:36.973] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service mixin
+[072月2025 19:27:36.973] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service mixin
+[072月2025 19:27:36.974] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
+[072月2025 19:27:36.974] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Initiating mod scan
+[072月2025 19:27:36.986] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModListHandler/CORE]: Found mod coordinates from lists: []
+[072月2025 19:27:36.988] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Mod Locators : (mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null),(userdev classpath:null),(JarInJar:null)
+[072月2025 19:27:37.000] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[AI改进] AI-Improvements-1.18.2-0.5.2.jar
+[072月2025 19:27:37.061] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [AI改进] AI-Improvements-1.18.2-0.5.2.jar with {aiimprovements} mods - versions {0.5.2}
+[072月2025 19:27:37.064] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[FPS减速器] FpsReducer2-forge-1.18.2-2.0.jar
+[072月2025 19:27:37.070] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [FPS减速器] FpsReducer2-forge-1.18.2-2.0.jar with {fpsreducer} mods - versions {1.18.2-2.0}
+[072月2025 19:27:37.073] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[JEI物品管理器] jei-1.18.2-forge-10.2.1.1009.jar
+[072月2025 19:27:37.076] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [JEI物品管理器] jei-1.18.2-forge-10.2.1.1009.jar with {jei} mods - versions {10.2.1.1009}
+[072月2025 19:27:37.079] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[sekwah41的火影忍者] NarutoMod-1.3.0-universal.jar
+[072月2025 19:27:37.080] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [sekwah41的火影忍者] NarutoMod-1.3.0-universal.jar with {narutomod} mods - versions {1.3.0}
+[072月2025 19:27:37.085] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[Xaero的小地图] Xaeros_Minimap_25.0.0_Forge_1.18.2.jar
+[072月2025 19:27:37.086] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [Xaero的小地图] Xaeros_Minimap_25.0.0_Forge_1.18.2.jar with {xaerominimap} mods - versions {25.0.0}
+[072月2025 19:27:37.089] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[动态 FPS] dynamic-fps-3.7.7+minecraft-1.18.0-forge.jar
+[072月2025 19:27:37.095] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [动态 FPS] dynamic-fps-3.7.7+minecraft-1.18.0-forge.jar with {dynamic_fps} mods - versions {3.7.7}
+[072月2025 19:27:37.102] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[动态光源] dynamiclights-1.18.6.jar
+[072月2025 19:27:37.103] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [动态光源] dynamiclights-1.18.6.jar with {dynamiclights} mods - versions {1.18.6}
+[072月2025 19:27:37.107] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[动态准星] dynamiccrosshair-5.2+1.18.2-forge.jar
+[072月2025 19:27:37.109] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [动态准星] dynamiccrosshair-5.2+1.18.2-forge.jar with {dynamiccrosshair} mods - versions {5.2+1.18.2}
+[072月2025 19:27:37.111] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[实体渲染机制优化] entityculling-forge-1.6.1-mc1.18.2.jar
+[072月2025 19:27:37.112] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [实体渲染机制优化] entityculling-forge-1.6.1-mc1.18.2.jar with {entityculling} mods - versions {1.6.1}
+[072月2025 19:27:37.121] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[是，史蒂夫模型] yesstevemodel-forge-1.18.2-2.2.2.jar
+[072月2025 19:27:37.124] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [是，史蒂夫模型] yesstevemodel-forge-1.18.2-2.2.2.jar with {yes_steve_model} mods - versions {2.2.2}
+[072月2025 19:27:37.126] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[更多动画] notenoughanimations-forge-1.9.1-mc1.18.2.jar
+[072月2025 19:27:37.127] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [更多动画] notenoughanimations-forge-1.9.1-mc1.18.2.jar with {notenoughanimations} mods - versions {1.9.1}
+[072月2025 19:27:37.130] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[更好的生物群系过渡] betterbiomeblend-1.18.2-1.3.5-forge.jar
+[072月2025 19:27:37.131] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [更好的生物群系过渡] betterbiomeblend-1.18.2-1.3.5-forge.jar with {betterbiomeblend} mods - versions {1.3.5-forge}
+[072月2025 19:27:37.141] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[流畅加载重置版] smoothboot(reloaded)-mc1.18.2-0.0.4.jar
+[072月2025 19:27:37.143] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [流畅加载重置版] smoothboot(reloaded)-mc1.18.2-0.0.4.jar with {smoothboot} mods - versions {0.0.4}
+[072月2025 19:27:37.145] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[现代化修复] modernfix-forge-5.18.0+mc1.18.2.jar
+[072月2025 19:27:37.148] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [现代化修复] modernfix-forge-5.18.0+mc1.18.2.jar with {modernfix} mods - versions {5.18.0+mc1.18.2}
+[072月2025 19:27:37.159] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[车万女仆] touhoulittlemaid-1.18.2-release-1.1.14.jar
+[072月2025 19:27:37.160] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [车万女仆] touhoulittlemaid-1.18.2-release-1.1.14.jar with {touhou_little_maid} mods - versions {1.1.14}
+[072月2025 19:27:37.163] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[铷 · 扩展] rubidium-extra-0.4.18+mc1.18.2-build.86.jar
+[072月2025 19:27:37.164] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [铷 · 扩展] rubidium-extra-0.4.18+mc1.18.2-build.86.jar with {sodiumextra} mods - versions {0.4.18+mc1.18.2-build.86}
+[072月2025 19:27:37.167] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[铷] rubidium-0.5.6.jar
+[072月2025 19:27:37.168] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [铷] rubidium-0.5.6.jar with {rubidium} mods - versions {0.5.6}
+[072月2025 19:27:37.171] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\[预生成区块] Chunky-1.2.164.jar
+[072月2025 19:27:37.172] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file [预生成区块] Chunky-1.2.164.jar with {chunky} mods - versions {1.2.164}
+[072月2025 19:27:37.175] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\cloth-config-6.5.102-forge.jar
+[072月2025 19:27:37.176] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file cloth-config-6.5.102-forge.jar with {cloth_config} mods - versions {6.5.102}
+[072月2025 19:27:37.179] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\cwb-forge-3.0.0+mc1.18.jar
+[072月2025 19:27:37.180] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file cwb-forge-3.0.0+mc1.18.jar with {cubes_without_borders} mods - versions {3.0.0+mc1.18}
+[072月2025 19:27:37.184] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\embeddium-0.3.18+mc1.18.2.jar
+[072月2025 19:27:37.185] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file embeddium-0.3.18+mc1.18.2.jar with {embeddium,rubidium} mods - versions {0.3.18+mc1.18.2,0.5.6}
+[072月2025 19:27:37.189] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\Fastload-Reforged-mc1.18.2-3.4.0.jar
+[072月2025 19:27:37.189] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file Fastload-Reforged-mc1.18.2-3.4.0.jar with {fastload} mods - versions {3.4.0}
+[072月2025 19:27:37.191] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\oculus-flywheel-compat-forge1.18.2+1.0.3.jar
+[072月2025 19:27:37.192] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file oculus-flywheel-compat-forge1.18.2+1.0.3.jar with {irisflw} mods - versions {1.0.3}
+[072月2025 19:27:37.196] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\oculus-mc1.18.2-1.6.4.jar
+[072月2025 19:27:37.197] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file oculus-mc1.18.2-1.6.4.jar with {oculus} mods - versions {1.6.4}
+[072月2025 19:27:37.200] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\Patchouli-1.18.2-71.1.jar
+[072月2025 19:27:37.201] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file Patchouli-1.18.2-71.1.jar with {patchouli} mods - versions {1.18.2-71.1}
+[072月2025 19:27:37.204] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\SekCLib-0.3.1-universal.jar
+[072月2025 19:27:37.205] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file SekCLib-0.3.1-universal.jar with {sekclib} mods - versions {0.3.1}
+[072月2025 19:27:37.207] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\versions\1.18.2-Forge_40.3.0\mods\selene-1.18.2-1.17.17.jar
+[072月2025 19:27:37.208] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file selene-1.18.2-1.17.17.jar with {selene} mods - versions {1.18.2-1.17.17}
+[072月2025 19:27:37.395] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file client-1.18.2-20220404.173914-srg.jar with {minecraft} mods - versions {1.18.2}
+[072月2025 19:27:37.402] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\fmlcore\1.18.2-40.3.0\fmlcore-1.18.2-40.3.0.jar
+[072月2025 19:27:37.402] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\fmlcore\1.18.2-40.3.0\fmlcore-1.18.2-40.3.0.jar is missing mods.toml file
+[072月2025 19:27:37.406] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\javafmllanguage\1.18.2-40.3.0\javafmllanguage-1.18.2-40.3.0.jar
+[072月2025 19:27:37.407] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\javafmllanguage\1.18.2-40.3.0\javafmllanguage-1.18.2-40.3.0.jar is missing mods.toml file
+[072月2025 19:27:37.411] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\lowcodelanguage\1.18.2-40.3.0\lowcodelanguage-1.18.2-40.3.0.jar
+[072月2025 19:27:37.411] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\lowcodelanguage\1.18.2-40.3.0\lowcodelanguage-1.18.2-40.3.0.jar is missing mods.toml file
+[072月2025 19:27:37.416] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\mclanguage\1.18.2-40.3.0\mclanguage-1.18.2-40.3.0.jar
+[072月2025 19:27:37.416] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\mclanguage\1.18.2-40.3.0\mclanguage-1.18.2-40.3.0.jar is missing mods.toml file
+[072月2025 19:27:37.456] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate D:\新建文件夹\Snapshot 2.8.12(2)\.minecraft\libraries\net\minecraftforge\forge\1.18.2-40.3.0\forge-1.18.2-40.3.0-universal.jar
+[072月2025 19:27:37.457] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.18.2-40.3.0-universal.jar with {forge} mods - versions {40.3.0}
+[072月2025 19:27:37.466] [main/ERROR] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Failed to build unique mod list after mod discovery.
+net.minecraftforge.fml.loading.EarlyLoadingException: Duplicate mods found
+	at net.minecraftforge.fml.loading.UniqueModListBuilder.buildUniqueList(UniqueModListBuilder.java:78) ~[fmlloader-1.18.2-40.3.0.jar%2352!/:1.0]
+	at net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer.discoverMods(ModDiscoverer.java:76) ~[fmlloader-1.18.2-40.3.0.jar%2352!/:?]
+	at net.minecraftforge.fml.loading.FMLLoader.beginModScan(FMLLoader.java:175) ~[fmlloader-1.18.2-40.3.0.jar%2352!/:1.0]
+	at net.minecraftforge.fml.loading.FMLServiceProvider.beginScanning(FMLServiceProvider.java:86) ~[fmlloader-1.18.2-40.3.0.jar%2352!/:1.0]
+	at cpw.mods.modlauncher.TransformationServiceDecorator.runScan(TransformationServiceDecorator.java:112) ~[modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.modlauncher.TransformationServicesHandler.lambda$runScanningTransformationServices$8(TransformationServicesHandler.java:100) ~[modlauncher-9.1.3.jar%2339!/:?]
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197) [?:?]
+	at java.util.HashMap$ValueSpliterator.forEachRemaining(HashMap.java:1779) [?:?]
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509) [?:?]
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499) [?:?]
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575) [?:?]
+	at java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260) [?:?]
+	at java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616) [?:?]
+	at java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622) [?:?]
+	at java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627) [?:?]
+	at cpw.mods.modlauncher.TransformationServicesHandler.runScanningTransformationServices(TransformationServicesHandler.java:102) [modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.modlauncher.TransformationServicesHandler.initializeTransformationServices(TransformationServicesHandler.java:55) [modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:87) [modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.1.3.jar%2339!/:?]
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:149) [bootstraplauncher-1.0.0.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at oolloo.jlw.Wrapper.invokeMain(Wrapper.java:112) [JavaWrapper.jar:?]
+	at oolloo.jlw.Wrapper.main(Wrapper.java:105) [JavaWrapper.jar:?]
+[072月2025 19:27:37.479] [main/ERROR] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/SCAN]: Mod Discovery failed. Skipping dependency discovery.
+[072月2025 19:27:37.482] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service fml
+[072月2025 19:27:37.487] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found 0 language providers
+[072月2025 19:27:37.492] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Configured system mods: [minecraft]
