@@ -7,6 +7,7 @@ from pathlib import Path
 
 from logginganalysis import LogAnalyzer
 from logginganalysis.utils.exceptions import LoggingAnalysisError
+from logginganalysis.utils.logging_config import setup_logging
 
 
 async def main() -> None:
@@ -46,8 +47,23 @@ async def main() -> None:
         action="store_true",
         help="以 MCP 服务器模式运行",
     )
+    parser.add_argument(
+        "--log-level",
+        type=str,
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        default="INFO",
+        help="日志级别（默认：INFO）",
+    )
+    parser.add_argument(
+        "--log-file",
+        type=str,
+        help="日志文件路径（可选）",
+    )
 
     args = parser.parse_args()
+
+    # 初始化日志
+    setup_logging(level=args.log_level, log_file=args.log_file)
 
     # MCP 模式
     if args.mcp:

@@ -8,6 +8,7 @@ from logginganalysis.models.extraction import (
     ProblematicBehavior,
 )
 from logginganalysis.models.integration import AnalysisInsight, IntegratedAnalysis
+from logginganalysis.models.progress import AnalysisProgress, ChunkProgress, ProcessingStep
 from logginganalysis.models.report import AnalysisReport, ReportMetadata
 
 __all__ = [
@@ -22,6 +23,10 @@ __all__ = [
     # Integration models
     "AnalysisInsight",
     "IntegratedAnalysis",
+    # Progress models
+    "AnalysisProgress",
+    "ChunkProgress",
+    "ProcessingStep",
     # Report models
     "ReportMetadata",
     "AnalysisReport",

@@ -13,6 +13,9 @@ wheels/
 .env
 .env.test
 uv.lock
+input/
+.pytest_cache/
+.ruff_cache/
 
 
 # AI agent files
@@ -21,3 +24,4 @@ uv.lock
 CLAUDE.md
 项目说明.MD
 Development.md
+AGENTS.md

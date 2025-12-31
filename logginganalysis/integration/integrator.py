@@ -1,5 +1,6 @@
 """日志信息集成器。"""
 
+import logging
 from typing import Any
 
 from langchain_core.runnables import Runnable
@@ -15,6 +16,8 @@ from logginganalysis.models.extraction import ChunkExtractionResult
 from logginganalysis.models.integration import IntegratedAnalysis
 from logginganalysis.utils.exceptions import IntegrationError
 from logginganalysis.utils.rate_limiter import RateLimiter, RateLimitConfig
+
+logger = logging.getLogger(__name__)
 
 
 class LogIntegrator:
@@ -82,6 +85,7 @@ class LogIntegrator:
             IntegrationError: 集成失败时抛出
         """
         if not extractions:
+            logger.warning("没有可分析的日志提取结果")
             return IntegratedAnalysis(
                 overall_summary="没有可分析的日志提取结果",
                 key_findings=[],
@@ -89,6 +93,11 @@ class LogIntegrator:
                 system_context={},
                 confidence_score=0.0,
             )
+
+        logger.info(
+            f"开始集成分析 {len(extractions)} 个提取结果，"
+            f"发现 {sum(len(e.exceptions) for e in extractions)} 个异常"
+        )
 
         # 等待流控许可（集成调用通常消耗更多资源）
         if self.rate_limiter:
@@ -98,16 +107,21 @@ class LogIntegrator:
             # 可选：执行网页搜索获取额外上下文
             search_results: list[dict[str, Any]] = []
             if enable_search and self.search_tool.is_enabled():
+                logger.info("启用网页搜索获取额外上下文")
                 search_results = await self._perform_context_search(extractions)
 
             # 执行集成分析
-            analysis: IntegratedAnalysis = await self.chain.ainvoke(
-                {"extractions": extractions}
+            analysis: IntegratedAnalysis = await self.chain.ainvoke({"extractions": extractions})
+
+            logger.info(
+                f"集成分析完成，生成了 {len(analysis.key_findings)} 个关键发现，"
+                f"置信度: {analysis.confidence_score:.2f}"
             )
 
             return analysis
 
         except Exception as e:
+            logger.error(f"集成分析失败: {e}", exc_info=True)
             raise IntegrationError(f"集成分析失败: {e}") from e
 
     async def _perform_context_search(
