@@ -2,7 +2,7 @@
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class ExceptionInfo(BaseModel):
@@ -27,8 +27,8 @@ class ExceptionInfo(BaseModel):
             return "\n".join(v)
         return v
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "type": "ConnectionError",
                 "message": "Database connection timeout",
@@ -36,6 +36,7 @@ class ExceptionInfo(BaseModel):
                 "occurrence_count": 3,
             }
         }
+    )
 
 
 class LibraryReference(BaseModel):
@@ -51,14 +52,15 @@ class LibraryReference(BaseModel):
     type: str | None = Field(default=None, description="库类型 (如 mod, framework, library 等)")
     source: str | None = Field(default=None, description="来源信息")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "name": "FastAPI",
                 "version": "0.104.1",
                 "context": "INFO: Started server process [1234] using Uvicorn",
             }
         }
+    )
 
 
 class ProblematicBehavior(BaseModel):
@@ -68,7 +70,8 @@ class ProblematicBehavior(BaseModel):
     """
 
     category: str | None = Field(
-        default=None, description="问题类别（如：database、network、memory、performance、native_library、security、launch_tweaking）"
+        default=None,
+        description="问题类别（如：database、network、memory、performance、native_library、security、launch_tweaking）",
     )
     description: str = Field(..., description="问题描述")
     severity: Literal["low", "medium", "high", "critical", "warning", "info"] = Field(
@@ -88,8 +91,8 @@ class ProblematicBehavior(BaseModel):
             return "low"
         return v
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "category": "database",
                 "description": "Multiple database connection failures detected",
@@ -100,6 +103,7 @@ class ProblematicBehavior(BaseModel):
                 ],
             }
         }
+    )
 
 
 class ChunkExtractionResult(BaseModel):
@@ -108,18 +112,18 @@ class ChunkExtractionResult(BaseModel):
     表示从单个日志块中提取的所有信息。
     """
 
-    chunk_id: str | None = Field(default=None, description="对应的日志块ID（AI提取时可为空，由调用方填充）")
-    exceptions: list[ExceptionInfo] = Field(default_factory=list, description="提取的异常信息")
-    libraries: list[LibraryReference] = Field(
-        default_factory=list, description="提取的库引用信息"
+    chunk_id: str | None = Field(
+        default=None, description="对应的日志块ID（AI提取时可为空，由调用方填充）"
     )
+    exceptions: list[ExceptionInfo] = Field(default_factory=list, description="提取的异常信息")
+    libraries: list[LibraryReference] = Field(default_factory=list, description="提取的库引用信息")
     problematic_behaviors: list[ProblematicBehavior] = Field(
         default_factory=list, description="提取的问题行为"
     )
     summary: str = Field(..., description="该块的简要总结")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "chunk_id": "550e8400-e29b-41d4-a716-446655440000",
                 "exceptions": [
@@ -148,3 +152,4 @@ class ChunkExtractionResult(BaseModel):
                 "summary": "Chunk contains database connection issues and FastAPI startup logs.",
             }
         }
+    )

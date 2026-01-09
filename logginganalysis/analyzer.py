@@ -12,7 +12,7 @@ from logginganalysis.config.settings import get_settings
 from logginganalysis.extraction import LogExtractor
 from logginganalysis.integration import LogIntegrator, WebSearchTool
 from logginganalysis.models.report import AnalysisReport
-from logginganalysis.reporting import ReportGenerator, get_formatter
+from logginganalysis.reporting import OutputFormat, ReportGenerator, get_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ class LogAnalyzer:
             chunk_overlap=settings.chunk_overlap,
         )
 
-        self.extractor = extractor or LogExtractor()
+        self.extractor = extractor or LogExtractor(use_structured_output=True)
         self.integrator = integrator or LogIntegrator()
         self.report_generator = report_generator or ReportGenerator()
         self.progress_callback = progress_callback
@@ -140,19 +140,22 @@ class LogAnalyzer:
 
         # 4. 生成报告
         self._update_progress("reporting", "生成分析报告")
+        from logginganalysis.models.report import ReportMetadata
+
+        metadata = ReportMetadata(
+            log_source=log_source,
+            log_size_bytes=len(log_content.encode("utf-8")),
+            chunk_count=len(chunks.chunks),
+            models_used={
+                "extraction": get_settings().extraction_model,
+                "integration": get_settings().integration_model,
+            },
+            processing_time_seconds=time.time() - start_time,
+        )
         report = self.report_generator.generate(
             analysis=analysis,
             extractions=extractions,
-            metadata={
-                "log_source": log_source,
-                "log_size_bytes": len(log_content.encode("utf-8")),
-                "chunk_count": len(chunks.chunks),
-                "models_used": {
-                    "extraction": get_settings().extraction_model,
-                    "integration": get_settings().integration_model,
-                },
-                "processing_time_seconds": time.time() - start_time,
-            },
+            metadata=metadata,
             search_results=search_results,
         )
 
@@ -209,7 +212,7 @@ class LogAnalyzer:
             output_format=output_format,
         )
 
-    def format_report(self, report: AnalysisReport, format_type: str = "markdown") -> str:
+    def format_report(self, report: AnalysisReport, format_type: OutputFormat = "markdown") -> str:
         """格式化报告为字符串。
 
         Args:
@@ -226,7 +229,8 @@ class LogAnalyzer:
         log_content: str,
         log_source: str | None = None,
         enable_search: bool = False,
-        output_format: str = "markdown",
+        output_format: OutputFormat = "markdown",
+        **kwargs: Any,
     ) -> str:
         """分析日志并直接返回格式化的报告字符串。
 
@@ -254,7 +258,8 @@ class LogAnalyzer:
         self,
         file_path: str,
         enable_search: bool = False,
-        output_format: str = "markdown",
+        output_format: OutputFormat = "markdown",
+        **kwargs: Any,
     ) -> str:
         """分析日志文件并直接返回格式化的报告字符串。
 

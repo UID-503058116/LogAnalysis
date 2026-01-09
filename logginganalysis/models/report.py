@@ -3,7 +3,7 @@
 from datetime import datetime
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from logginganalysis.models.integration import IntegratedAnalysis
 from logginganalysis.models.extraction import ChunkExtractionResult
@@ -21,8 +21,8 @@ class ReportMetadata(BaseModel):
     models_used: dict[str, str] = Field(..., description="使用的AI模型")
     processing_time_seconds: float = Field(..., description="处理耗时（秒）")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "log_source": "/var/log/application.log",
                 "log_size_bytes": 102400,
@@ -34,6 +34,7 @@ class ReportMetadata(BaseModel):
                 "processing_time_seconds": 12.5,
             }
         }
+    )
 
 
 class AnalysisReport(BaseModel):
@@ -50,12 +51,10 @@ class AnalysisReport(BaseModel):
     search_results: list[dict[str, Any]] | None = Field(
         default=None, description="网页搜索结果（如果有）"
     )
-    generated_at: datetime = Field(
-        default_factory=datetime.utcnow, description="报告生成时间"
-    )
+    generated_at: datetime = Field(default_factory=datetime.now, description="报告生成时间")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "metadata": {
                     "log_source": "/var/log/application.log",
@@ -79,3 +78,4 @@ class AnalysisReport(BaseModel):
                 "generated_at": "2025-12-31T10:00:00Z",
             }
         }
+    )

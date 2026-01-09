@@ -34,8 +34,8 @@ class TokenBucket:
             burst: 桶的最大容量（突发容量）
         """
         self.rate = rate  # 令牌/分钟
-        self.burst = burst  # 最大桶容量
-        self.tokens = burst  # 当前令牌数
+        self.burst = float(burst)  # 最大桶容量
+        self.tokens = float(burst)  # 当前令牌数
         self.last_update = time.time()
         self._lock = asyncio.Lock()
 
@@ -218,8 +218,8 @@ class RateLimiter:
         }
 
         if self._rpm_limiter:
-            stats["rpm_available_tokens"] = round(self._rpm_limiter.tokens, 2)
-            stats["rpm_bucket_size"] = self._rpm_limiter.burst
+            stats["rpm_available_tokens"] = round(self._rpm_limiter.tokens, 2)  # type: ignore[assignment]
+            stats["rpm_bucket_size"] = self._rpm_limiter.burst  # type: ignore[assignment]
 
         if self._tpm_limiter:
             stats["tpm_current_requests"] = len(self._tpm_limiter.requests)

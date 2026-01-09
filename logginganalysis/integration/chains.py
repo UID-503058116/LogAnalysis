@@ -3,6 +3,7 @@
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.runnables import Runnable
 from langchain_openai import ChatOpenAI
+from pydantic import SecretStr
 
 from logginganalysis.config.settings import get_settings
 from logginganalysis.integration.prompts import (
@@ -34,7 +35,7 @@ def create_integration_chain(
     if llm is None:
         llm = ChatOpenAI(
             model=settings.integration_model,
-            api_key=settings.openai_api_key,
+            api_key=SecretStr(settings.openai_api_key),
             base_url=settings.openai_base_url,
             temperature=0.3,  # 略高的温度以允许更多综合分析
         )
@@ -58,7 +59,7 @@ def create_integration_chain(
         # 统计信息
         total_exceptions = sum(len(e.exceptions) for e in extractions)
         total_behaviors = sum(len(e.problematic_behaviors) for e in extractions)
-        all_libraries = set()
+        all_libraries: set[str] = set()
         for e in extractions:
             all_libraries.update(lib.name for lib in e.libraries)
 
@@ -72,12 +73,7 @@ def create_integration_chain(
         }
 
     # 完整的链
-    chain = (
-        prepare_input
-        | prompt
-        | llm
-        | parser
-    )
+    chain = prepare_input | prompt | llm | parser
 
     return chain
 
@@ -100,7 +96,7 @@ def create_structured_integration_chain(
     if llm is None:
         llm = ChatOpenAI(
             model=settings.integration_model,
-            api_key=settings.openai_api_key,
+            api_key=SecretStr(settings.openai_api_key),
             base_url=settings.openai_base_url,
             temperature=0.3,
         )
@@ -121,7 +117,7 @@ def create_structured_integration_chain(
         # 统计信息
         total_exceptions = sum(len(e.exceptions) for e in extractions)
         total_behaviors = sum(len(e.problematic_behaviors) for e in extractions)
-        all_libraries = set()
+        all_libraries: set[str] = set()
         for e in extractions:
             all_libraries.update(lib.name for lib in e.libraries)
 
@@ -133,10 +129,6 @@ def create_structured_integration_chain(
             "library_count": len(all_libraries),
         }
 
-    chain = (
-        prepare_input
-        | integration_prompt
-        | structured_llm
-    )
+    chain = prepare_input | integration_prompt | structured_llm
 
     return chain

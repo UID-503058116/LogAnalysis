@@ -64,13 +64,9 @@ class TestLogExtractor:
             assert extractor is not None
 
     @pytest.mark.asyncio
-    async def test_extract_from_chunk_success(
-        self, mock_chain, mock_extraction_result
-    ):
+    async def test_extract_from_chunk_success(self, mock_chain, mock_extraction_result):
         """测试成功从单个块提取。"""
-        chunk = LogChunk(
-            id="test-chunk", content="Test log", start_index=0, end_index=8
-        )
+        chunk = LogChunk(id="test-chunk", content="Test log", start_index=0, end_index=8)
 
         mock_chain.ainvoke.return_value = mock_extraction_result
 
@@ -109,6 +105,7 @@ class TestLogExtractor:
         self, mock_chain, sample_chunks, mock_extraction_result
     ):
         """测试成功从多个块提取。"""
+
         # 设置 mock 返回值
         async def mock_invoke(inputs):
             result = mock_extraction_result.model_copy()
@@ -148,25 +145,22 @@ class TestLogExtractor:
         """测试直接从日志内容提取。"""
         mock_chain.ainvoke.return_value = mock_extraction_result
 
-        with patch("logginganalysis.extraction.extractor.LogChunker") as MockChunker:
+        with patch("logginganalysis.chunking.LogChunker") as MockChunker:
             mock_chunker = Mock()
             mock_chunks = LogChunks(
-                chunks=[
-                    LogChunk(
-                        id="chunk-1", content="Test", start_index=0, end_index=4
-                    )
-                ],
+                chunks=[LogChunk(id="chunk-1", content="Test", start_index=0, end_index=4)],
                 total_size=4,
                 original_log_size=4,
             )
-            mock_chunker.return_value.chunk_log.return_value = mock_chunks
-            MockChunker.return_value = mock_chunker
+            mock_chunker_instance = Mock()
+            mock_chunker_instance.chunk_log.return_value = mock_chunks
+            MockChunker.return_value = mock_chunker_instance
 
             extractor = LogExtractor(chain=mock_chain)
             results = await extractor.extract_from_log("Test log content")
 
             assert isinstance(results, list)
-            mock_chunker.assert_called_once()
+            MockChunker.assert_called_once()
 
     @pytest.mark.asyncio
     async def test_concurrency_limit(self, mock_chain, sample_chunks):

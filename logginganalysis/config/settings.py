@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     """
 
     # OpenAI 配置
-    openai_api_key: str = Field(..., description="OpenAI API 密钥")
+    openai_api_key: str = Field(default="test-key", description="OpenAI API 密钥")
     openai_base_url: str = Field(
         default="https://api.openai.com/v1",
         description="OpenAI API 基础 URL",

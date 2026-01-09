@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import Literal
+from typing import Any, Literal
 
 from logginganalysis.models.report import AnalysisReport
 
@@ -102,7 +102,8 @@ class MarkdownFormatter(ReportFormatter):
         if report.raw_extractions:
             lines.append("## 各块提取摘要\n")
             for extraction in report.raw_extractions:
-                chunk_info = f"块 {extraction.chunk_id[:8]}..."
+                chunk_id = extraction.chunk_id or "unknown"
+                chunk_info = f"块 {chunk_id[:8]}..."
                 lines.append(f"### {chunk_info}")
                 lines.append(f"{extraction.summary}\n")
 
@@ -116,8 +117,11 @@ class MarkdownFormatter(ReportFormatter):
         if report.search_results:
             lines.append("## 相关资源\n")
             for result in report.search_results[:5]:
-                lines.append(f"- [{result.get('title', 'Untitled')}]({result.get('url', '#')})")
-                lines.append(f"  {result.get('snippet', '')}\n")
+                title = result.get("title") or "Untitled"
+                url = result.get("url") or "#"
+                snippet = result.get("snippet") or ""
+                lines.append(f"- [{title}]({url})")
+                lines.append(f"  {snippet}\n")
 
         return "\n".join(lines)
 
@@ -127,11 +131,12 @@ class MarkdownFormatter(ReportFormatter):
 
     def _format_size(self, size_bytes: int) -> str:
         """格式化文件大小。"""
+        size: float = float(size_bytes)
         for unit in ["B", "KB", "MB", "GB"]:
-            if size_bytes < 1024.0:
-                return f"{size_bytes:.1f} {unit}"
-            size_bytes /= 1024.0
-        return f"{size_bytes:.1f} TB"
+            if size < 1024.0:
+                return f"{size:.1f} {unit}"
+            size /= 1024.0
+        return f"{size:.1f} TB"
 
     def _create_confidence_bar(self, score: float) -> str:
         """创建置信度条。"""
@@ -139,15 +144,17 @@ class MarkdownFormatter(ReportFormatter):
         bar = "█" * filled + "░" * (20 - filled)
         return bar
 
-    def _infer_severity(self, finding) -> str | None:
+    def _infer_severity(self, finding: Any) -> str | None:
         """推断发现的严重程度。"""
+        from logginganalysis.models.integration import AnalysisInsight
+
         # 基于类别关键词推断严重程度
         critical_keywords = ["crash", "fatal", "security", "breach", "数据泄露"]
         high_keywords = ["failure", "timeout", "error", "性能"]
         medium_keywords = ["warning", "慢", "延迟"]
 
-        category_lower = finding.category.lower()
-        desc_lower = finding.description.lower()
+        category_lower = (finding.category or "").lower()
+        desc_lower = (finding.description or "").lower()
 
         if any(kw in category_lower or kw in desc_lower for kw in critical_keywords):
             return "🔴 严重"

@@ -4,6 +4,8 @@ import asyncio
 import logging
 from typing import Any
 
+from pydantic import SecretStr
+
 from langchain_core.runnables import Runnable
 from langchain_openai import ChatOpenAI
 
@@ -56,7 +58,7 @@ class LogExtractor:
 
         self.llm = llm or ChatOpenAI(
             model=settings.extraction_model,
-            api_key=settings.openai_api_key,
+            api_key=SecretStr(settings.openai_api_key),
             base_url=settings.openai_base_url,
             temperature=0,
         )
@@ -93,14 +95,13 @@ class LogExtractor:
         Raises:
             ExtractionError: 提取失败时抛出
         """
-        progress_percentage = (chunk_index / total_chunks * 100) if total_chunks > 0 else 0
-
         logger.info(
-            f"[{chunk_index + 1}/{total_chunks} ({progress_percentage:.1f}%)] "
+            f"[{chunk_index + 1}/{total_chunks}] "
             f"开始提取chunk {chunk.id} (大小: {len(chunk.content)} 字符)"
         )
 
         if self.progress_callback:
+            progress_percentage = (chunk_index / total_chunks * 100) if total_chunks > 0 else 0
             self.progress_callback(
                 {
                     "step": "extraction",
@@ -117,7 +118,22 @@ class LogExtractor:
             await self.rate_limiter.wait_for_permission(tokens=1)
 
         try:
-            result: ChunkExtractionResult = await self.chain.ainvoke({"log_chunk": chunk.content})
+            from logginganalysis.models.extraction import ChunkExtractionResult
+
+            chain_result = await self.chain.ainvoke({"log_chunk": chunk.content})
+
+            # 检查是否返回了 None
+            if chain_result is None:
+                logger.warning(f"[{chunk_index + 1}/{total_chunks}] AI 返回了 None，使用空结果")
+                result = ChunkExtractionResult(
+                    chunk_id=chunk.id,
+                    exceptions=[],
+                    libraries=[],
+                    problematic_behaviors=[],
+                    summary="AI 返回空结果，无法提取信息",
+                )
+            else:
+                result = chain_result
 
             # 确保结果包含正确的 chunk_id
             result.chunk_id = chunk.id
@@ -129,6 +145,9 @@ class LogExtractor:
             )
 
             if self.progress_callback:
+                progress_percentage = (
+                    ((chunk_index + 1) / total_chunks * 100) if total_chunks > 0 else 0
+                )
                 self.progress_callback(
                     {
                         "step": "extraction",
@@ -152,6 +171,9 @@ class LogExtractor:
             )
 
             if self.progress_callback:
+                progress_percentage = (
+                    ((chunk_index + 1) / total_chunks * 100) if total_chunks > 0 else 0
+                )
                 self.progress_callback(
                     {
                         "step": "extraction",
@@ -181,7 +203,7 @@ class LogExtractor:
             max_concurrency: 最大并发数
 
         Returns:
-            list[ChunkExtractionResult]: 提取结果列表
+            list[ChunkExtractionResult]: 提取结果列表（按原始chunk顺序）
 
         Raises:
             ExtractionError: 提取失败时抛出
@@ -196,38 +218,46 @@ class LogExtractor:
             # 使用信号量限制并发数
             semaphore = asyncio.Semaphore(max_concurrency)
 
-            async def extract_with_semaphore(chunk: LogChunk, index: int) -> ChunkExtractionResult:
+            async def extract_with_semaphore(
+                chunk: LogChunk, index: int
+            ) -> tuple[int, ChunkExtractionResult | Exception]:
                 async with semaphore:
-                    return await self.extract_from_chunk(chunk, index, len(chunks.chunks))
+                    try:
+                        result = await self.extract_from_chunk(chunk, index, len(chunks.chunks))
+                        return (index, result)
+                    except Exception as e:
+                        return (index, e)
 
             # 并发提取所有块
-            results = await asyncio.gather(
+            indexed_results = await asyncio.gather(
                 *[extract_with_semaphore(chunk, i) for i, chunk in enumerate(chunks.chunks)],
-                return_exceptions=True,
             )
+
+            # 按索引排序，确保结果顺序与原始chunk顺序一致
+            indexed_results.sort(key=lambda x: x[0])
 
             # 检查是否有异常
             extractions: list[ChunkExtractionResult] = []
-            errors: list[tuple[str, Exception]] = []
+            errors: list[tuple[int, str, Exception]] = []
 
-            for i, result in enumerate(results):
+            for index, result in indexed_results:
                 if isinstance(result, Exception):
-                    errors.append((chunks.chunks[i].id, result))
+                    errors.append((index, chunks.chunks[index].id, result))
                 elif isinstance(result, ChunkExtractionResult):
                     extractions.append(result)
 
             if errors:
                 error_msg = f"提取过程中发生 {len(errors)} 个错误"
                 logger.error(
-                    f"{error_msg}: {[cid for cid, _ in errors]}",
+                    f"{error_msg}: {[cid for _, cid, _ in errors]}",
                     extra={
                         "error_count": len(errors),
-                        "errors": [(cid, str(e)) for cid, e in errors],
+                        "errors": [(index, cid, str(e)) for index, cid, e in errors],
                     },
                 )
                 raise ExtractionError(
                     error_msg,
-                    details={"errors": [(cid, str(e)) for cid, e in errors]},
+                    details={"errors": [(index, cid, str(e)) for index, cid, e in errors]},
                 )
 
             logger.info(f"批量提取完成，成功: {len(extractions)}/{len(chunks.chunks)} 个chunk")

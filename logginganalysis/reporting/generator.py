@@ -1,7 +1,7 @@
 """报告生成器。"""
 
 import time
-from typing import Any
+from typing import Any, Literal
 
 from logginganalysis.config.settings import get_settings
 from logginganalysis.models.extraction import ChunkExtractionResult
@@ -9,6 +9,8 @@ from logginganalysis.models.integration import IntegratedAnalysis
 from logginganalysis.models.report import AnalysisReport, ReportMetadata
 from logginganalysis.reporting.formatters import ReportFormatter, get_formatter
 from logginganalysis.utils.exceptions import ReportGenerationError
+
+OutputFormat = Literal["markdown", "json", "text"]
 
 
 class ReportGenerator:
@@ -20,7 +22,7 @@ class ReportGenerator:
     def __init__(
         self,
         formatter: ReportFormatter | None = None,
-        default_format: str = "markdown",
+        default_format: OutputFormat = "markdown",
     ) -> None:
         """初始化报告生成器。
 
@@ -70,7 +72,7 @@ class ReportGenerator:
             search_results=search_results,
         )
 
-    def format_report(self, report: AnalysisReport, format_type: str | None = None) -> str:
+    def format_report(self, report: AnalysisReport, format_type: OutputFormat | None = None) -> str:
         """格式化报告为字符串。
 
         Args:
@@ -100,7 +102,7 @@ class ReportGenerator:
         log_source: str | None = None,
         log_size_bytes: int = 0,
         processing_start_time: float | None = None,
-        format_type: str | None = None,
+        format_type: OutputFormat | None = None,
         search_results: list[dict[str, Any]] | None = None,
     ) -> str:
         """生成并格式化报告。

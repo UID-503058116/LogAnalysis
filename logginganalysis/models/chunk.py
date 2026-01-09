@@ -3,7 +3,7 @@
 from typing import Any
 from uuid import uuid4
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class LogChunk(BaseModel):
@@ -18,8 +18,8 @@ class LogChunk(BaseModel):
     end_index: int = Field(..., description="在原始日志中的结束位置")
     metadata: dict[str, Any] = Field(default_factory=dict, description="额外的元数据")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "id": "550e8400-e29b-41d4-a716-446655440000",
                 "content": "2025-12-31 10:00:00 INFO Starting application...",
@@ -28,6 +28,7 @@ class LogChunk(BaseModel):
                 "metadata": {"timestamp": "2025-12-31T10:00:00"},
             }
         }
+    )
 
 
 class LogChunks(BaseModel):
@@ -40,8 +41,8 @@ class LogChunks(BaseModel):
     total_size: int = Field(default=0, description="所有块的总字符数")
     original_log_size: int = Field(..., description="原始日志的字符数")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "chunks": [
                     {
@@ -56,3 +57,4 @@ class LogChunks(BaseModel):
                 "original_log_size": 50,
             }
         }
+    )

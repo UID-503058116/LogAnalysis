@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ErrorChain(BaseModel):
@@ -18,8 +18,8 @@ class ErrorChain(BaseModel):
     )
     final_outcome: str = Field(..., description="最终结果")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "root_cause": "LWJGL 原生库版本冲突",
                 "chain": [
@@ -42,6 +42,7 @@ class ErrorChain(BaseModel):
                 "final_outcome": "客户端完全无法启动",
             }
         }
+    )
 
 
 class AnalysisInsight(BaseModel):
@@ -53,12 +54,10 @@ class AnalysisInsight(BaseModel):
     category: str = Field(..., description="洞察类别")
     description: str = Field(..., description="洞察描述")
     evidence: list[str] = Field(default_factory=list, description="支持该洞察的证据")
-    recommendations: list[str] = Field(
-        default_factory=list, description="基于该洞察的建议"
-    )
+    recommendations: list[str] = Field(default_factory=list, description="基于该洞察的建议")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "category": "database",
                 "description": "Database connection pool exhaustion detected",
@@ -72,6 +71,7 @@ class AnalysisInsight(BaseModel):
                 ],
             }
         }
+    )
 
 
 class IntegratedAnalysis(BaseModel):
@@ -81,9 +81,7 @@ class IntegratedAnalysis(BaseModel):
     """
 
     overall_summary: str = Field(..., description="整体分析摘要")
-    key_findings: list[AnalysisInsight] = Field(
-        default_factory=list, description="关键发现列表"
-    )
+    key_findings: list[AnalysisInsight] = Field(default_factory=list, description="关键发现列表")
     error_chain: ErrorChain | None = Field(
         default=None, description="错误链，展示错误之间的因果关系"
     )
@@ -92,12 +90,10 @@ class IntegratedAnalysis(BaseModel):
         default_factory=dict,
         description="推断的系统环境信息（如操作系统、框架、数据库等）",
     )
-    confidence_score: float = Field(
-        ..., ge=0.0, le=1.0, description="分析的置信度分数（0.0-1.0）"
-    )
+    confidence_score: float = Field(..., ge=0.0, le=1.0, description="分析的置信度分数（0.0-1.0）")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "overall_summary": "The system is experiencing database connectivity issues "
                 "likely due to connection pool exhaustion.",
@@ -119,3 +115,4 @@ class IntegratedAnalysis(BaseModel):
                 "confidence_score": 0.85,
             }
         }
+    )

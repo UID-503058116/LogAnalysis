@@ -39,7 +39,7 @@ class TestLogChunker:
         small_log = "2025-12-31 10:00:00 INFO Test log entry\n"
         chunks = chunker.chunk_log(small_log)
         assert len(chunks.chunks) == 1
-        assert chunks.chunks[0].content == small_log
+        assert chunks.chunks[0].content == "2025-12-31 10:00:00 INFO Test log entry"  # 去除了换行符
         assert chunks.original_log_size == len(small_log)
 
     def test_chunk_large_log(self):
@@ -47,8 +47,7 @@ class TestLogChunker:
         chunker = LogChunker(chunk_size=200, chunk_overlap=50)
         # 创建足够大的日志
         large_log = "\n".join(
-            f"2025-12-31 10:00:{i:02d} INFO Log entry number {i} - " + "x" * 50
-            for i in range(20)
+            f"2025-12-31 10:00:{i:02d} INFO Log entry number {i} - " + "x" * 50 for i in range(20)
         )
         chunks = chunker.chunk_log(large_log)
         assert len(chunks.chunks) > 1

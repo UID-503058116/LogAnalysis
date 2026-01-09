@@ -74,7 +74,7 @@ class TestMarkdownFormatter:
         result = formatter.format(sample_report)
 
         assert "test.log" in result
-        assert "1024" in result  # log_size_bytes
+        assert "1.0 KB" in result  # log_size_bytes formatted
         assert "5" in result  # chunk_count
 
     def test_markdown_formatter_confidence_bar(self, sample_report):

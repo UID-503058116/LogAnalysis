@@ -2,9 +2,9 @@
 
 from datetime import datetime
 from typing import Any
-from uuid import UUID, uuid4
+from uuid import uuid4
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ProcessingStep(BaseModel):
@@ -17,8 +17,8 @@ class ProcessingStep(BaseModel):
     error_message: str | None = Field(default=None, description="错误信息")
     metadata: dict[str, Any] = Field(default_factory=dict, description="额外元数据")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "step_name": "chunk_extraction",
                 "status": "completed",
@@ -26,6 +26,7 @@ class ProcessingStep(BaseModel):
                 "end_time": "2024-01-01T00:00:01",
             }
         }
+    )
 
 
 class ChunkProgress(BaseModel):
@@ -43,8 +44,8 @@ class ChunkProgress(BaseModel):
         """计算进度百分比。"""
         return (self.chunk_index / self.total_chunks) * 100 if self.total_chunks > 0 else 0
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "chunk_id": "chunk-001",
                 "chunk_index": 1,
@@ -59,6 +60,7 @@ class ChunkProgress(BaseModel):
                 "duration_seconds": 1.23,
             }
         }
+    )
 
 
 class AnalysisProgress(BaseModel):
@@ -87,8 +89,8 @@ class AnalysisProgress(BaseModel):
         """计算总体进度百分比。"""
         return (self.completed_chunks / self.total_chunks) * 100 if self.total_chunks > 0 else 0
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "analysis_id": "analysis-001",
                 "start_time": "2024-01-01T00:00:00",
@@ -100,3 +102,4 @@ class AnalysisProgress(BaseModel):
                 "current_step": "reporting",
             }
         }
+    )

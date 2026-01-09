@@ -1,8 +1,14 @@
 """zai-sdk 网页搜索工具包装器。"""
 
-from typing import Any
+from typing import Any, Protocol
 
 from logginganalysis.utils.exceptions import IntegrationError
+
+
+class ZaiClientProtocol(Protocol):
+    """Protocol for ZaiClient."""
+
+    async def search(self, query: str, limit: int) -> Any: ...
 
 
 class WebSearchTool:
@@ -24,6 +30,7 @@ class WebSearchTool:
         self.api_key = api_key or settings.zai_api_key
         self.enabled = settings.enable_web_search and bool(self.api_key)
 
+        self.client: Any = None
         if self.enabled:
             try:
                 # 尝试导入 zai-sdk
@@ -31,13 +38,9 @@ class WebSearchTool:
 
                 self.client = ZaiClient(api_key=self.api_key)
             except ImportError as e:
-                raise IntegrationError(
-                    f"zai-sdk 未安装，但网页搜索已启用: {e}"
-                ) from e
+                raise IntegrationError(f"zai-sdk 未安装，但网页搜索已启用: {e}") from e
             except Exception as e:
                 raise IntegrationError(f"初始化 zai-sdk 失败: {e}") from e
-        else:
-            self.client = None
 
     async def search_for_context(
         self,
@@ -99,6 +102,9 @@ class WebSearchTool:
         Returns:
             list[dict]: 搜索结果列表
         """
+        if self.client is None:
+            return []
+
         # 这里假设 zai-sdk 有类似的接口
         # 实际实现需要根据 zai-sdk 的具体 API 调整
         try:
@@ -117,7 +123,12 @@ class WebSearchTool:
             else:
                 items = []
 
+            if not items:
+                return []
+
             for item in items[:max_results]:
+                if not isinstance(item, dict):
+                    continue
                 results.append(
                     {
                         "title": item.get("title", ""),
